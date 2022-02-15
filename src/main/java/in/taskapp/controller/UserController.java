@@ -2,6 +2,7 @@ package in.taskapp.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -21,8 +22,8 @@ import in.taskapp.service.UserService;
 public class UserController {
 
 	
-	//@Autowired
-	UserService userService = new UserService();
+	@Autowired
+	UserService userService;// = new UserServiceOld();
 	
 	//{ "name":"Naresh", "email":"n@gmail.com", "password":"pass123"} 
 	
