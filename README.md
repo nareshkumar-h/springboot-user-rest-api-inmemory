@@ -11,3 +11,4 @@
 * Update Profile Details
 * Delete User Details for the given id
 * Search by Role
+* List all users
