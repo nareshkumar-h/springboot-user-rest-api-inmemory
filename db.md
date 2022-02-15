@@ -34,6 +34,21 @@ commit;
 select * from taskapp_users;
 ```
 
+
+##### Spring - Jdbc Dependencies
+
+```xml
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+```
+
 ##### application.properties
 ```
 spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
