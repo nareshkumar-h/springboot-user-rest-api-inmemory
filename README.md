@@ -123,6 +123,8 @@ public class UserController {
 ```java
 package in.taskapp.model;
 
+import java.time.LocalDateTime;
+
 public class User {
 	
 	private Integer id;// int => 0, Integer => null
@@ -143,6 +145,26 @@ public class User {
 	
 	private Boolean active;
 	
+	private LocalDateTime createdDate;
+	
+	private LocalDateTime modifiedDate;
+	
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public LocalDateTime getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(LocalDateTime modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
 	public String getRole() {
 		return role;
 	}
@@ -204,6 +226,7 @@ public class User {
 	
 	
 }
+
 ```
 
 ##### Step 3: Create UserService.java
@@ -211,6 +234,7 @@ public class User {
 ```js
 package in.taskapp.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -239,6 +263,10 @@ public class UserService {
 		if(user.getRole() == null) {
 			user.setRole("USER");
 		}
+		
+		//update createdDate/modifiedDate
+		user.setCreatedDate(LocalDateTime.now());
+		user.setModifiedDate(LocalDateTime.now());
 
 		// 1. Save the data
 		usersList.add(user);
@@ -302,6 +330,7 @@ public class UserService {
 		if (searchResult != null) {
 			User user = usersList.get(i); // Get the record from that searched index
 			user.setActive(false);
+			user.setModifiedDate(LocalDateTime.now());
 		}
 
 	}
@@ -323,6 +352,7 @@ public class UserService {
 		if (searchResult != null) {
 			User user = usersList.get(i); // Get the record from that searched index
 			user.setPassword(userDTO.getPassword()); //Set New Password
+			user.setModifiedDate(LocalDateTime.now());
 		}
 	}
 
@@ -355,6 +385,8 @@ public class UserService {
 				user.setPassword(userDTO.getPassword()); //Set New Password	
 			}
 			
+			user.setModifiedDate(LocalDateTime.now());
+			
 		}
 	}
 
@@ -373,4 +405,5 @@ public class UserService {
 	}
 
 }
+
 ```
